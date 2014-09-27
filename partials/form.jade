@@ -1,0 +1,12 @@
+.form
+  .pageName
+    label(for="pageName") Page Name
+    input(id="pageName", type="text", ng-model="mc.pageName")
+  .pageText
+    p Page Text
+    div(text-angular, ng-model="mc.pageText")
+    // textarea(id=pageText, rows="4", cols="50", ng-model="mc.pageText")
+    // input(id="pageText", type="text", ng-model="mc.pageText")
+  button(ng-click="mc.submit()") Submit
+  h1 {{mc.pageName}}
+  h2 {{mc.pageText}}
