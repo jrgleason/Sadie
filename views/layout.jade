@@ -13,8 +13,8 @@ html
     script(src='//cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.2/textAngular-sanitize.min.js')
     script(src='//cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.2/textAngular.min.js')
   body
-    block content
+    .app(ng-app="jg.site")
+      jg-navbar(static="true")
+      block content
     script(src='/javascripts/templates.js')
-    script(src='/javascripts/siteApp.js')
-    script(src='/javascripts/main/main.js')
-    script(src='/javascripts/main/MainController.js')
+    script(src='/javascripts/angular-app.js')

@@ -18,7 +18,8 @@
   },
   "devDependencies": {
     "grunt": "^0.4.5",
-    "grunt-express": "^1.4.1",
+    "grunt-contrib-concat":"*",
+    "grunt-contrib-watch":"*",
     "html2js":"*",
     "grunt-html2js":"*"
   }
