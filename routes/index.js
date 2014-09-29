@@ -7,6 +7,12 @@ var db = require('orchestrate')('5f510b8f-c3d7-4d74-b63f-2ed30a8659ce');
 function Index(req, res){
   res.render('index', { title: 'Express' });
 }
+function Admin(req, res){
+  res.render('admin', {});
+}
+function Display(req, res){
+  res.render('display', {name:req.query.name});
+}
 function PageGET(req, res){
   db.list('Page')
     .then(function (result) {
@@ -47,8 +53,10 @@ function PagePOST(req, res){
   })
 }
 router.get('/', Index); 
+router.get('/admin', Admin);
 router.get('/Page', PageGET);
 router.post('/Page',PagePOST);
 router.get('/HTML',findByName);
+router.get('/display', Display);
 
 module.exports = router;

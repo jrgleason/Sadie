@@ -20,6 +20,10 @@ module.exports = function(grunt) {
           html2js:{
             files: ['partials/**/*.html','partials/**/*.jade'],
             tasks: ['html2js']
+          },
+          concat:{
+            files: ['src/angular/siteApp.js','src/angular/**/*.js'],
+            tasks: ['concat']
           }
         }
   });

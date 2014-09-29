@@ -1,6 +1,10 @@
-var app = angular.module('jg.site',['textAngular','templates-main']);
+var app = angular.module('jg.site',[
+  'textAngular',
+  'templates-main',
+  'ui.router' 
+]);
 
-var MainController = function($scope, $http){
+var MainController = function($scope, pageService){
   $scope.mc = this;
   if($scope.pageName != null){
     this.pageName = $scope.pageName;
@@ -9,17 +13,13 @@ var MainController = function($scope, $http){
     this.pageText = $scope.pageText;
   }
   this.submit = function(){
-    console.log("Submitting... "+JSON.stringify(this.pageText));
-    $http({
-      method: 'POST',
-      url: '/Page',
-      data: this
-    })
-    .success(function() {})
-    .error(function() {});
+    console.log("Submitting... "+JSON.stringify($scope.mc.pageText));
+    pageService.addPage(this)
+               .success(function() {})
+               .error(function() {});
   }
 }
-MainController.$inject = ['$scope', '$http'];
+MainController.$inject = ['$scope', 'pageService'];
 
 var MainPage = function(){
   return {
@@ -46,8 +46,9 @@ var NavbarController = function($scope){
     }
   }
   $scope.classes = function(){
-    console.log(_this.type());
-    return _this.type();
+    var result = [];
+    result.push(_this.type());
+    return result;
   }
 }
 
@@ -55,7 +56,8 @@ var Navbar = function(){
   return {
     restrict: "E",
     scope:{
-      static: "="
+      static: "=",
+      brand: "=",
     },
     controller: NavbarController,
     templateUrl:'../partials/navbar.jade'
@@ -63,6 +65,29 @@ var Navbar = function(){
 }
 angular.module('jg.site')
        .directive('jgNavbar', Navbar);
+
+var PageService = function($http,$q){
+  this.addPage = function(data){
+     return $http({
+      method: 'POST',
+      url: '/Page',
+      data: data
+    });
+  }
+}
+angular.module('jg.site')
+       .service('pageService', PageService);
+
+var Page = function(){
+  return {
+    restrict: "E",
+    templateUrl: function(tElement, tAttrs) {
+      return ("/HTML?name=" + tAttrs.name);
+    }
+  }
+}
+angular.module('jg.site')
+       .directive('jgPage',Page);
 
 var Panel = function(){
   return {
@@ -76,3 +101,25 @@ var Panel = function(){
 }
 angular.module('jg.site')
        .directive('jgPanel', Panel);
+
+var RouteHandler = function($stateProvider,   $urlRouterProvider){
+  $urlRouterProvider.otherwise('/');
+  $stateProvider.state("home", {
+    url: "/",
+    templateUrl:"/HTML?name=Yo"
+  });
+}
+angular.module('jg.site')
+.run(
+  ['$rootScope', '$state', '$stateParams',
+    function ($rootScope,   $state,   $stateParams) {
+      $rootScope.$state = $state;
+    }
+  ]
+)
+.config(
+  [          
+    '$stateProvider', '$urlRouterProvider',
+    RouteHandler
+  ]
+);

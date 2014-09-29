@@ -2,7 +2,8 @@ var Navbar = function(){
   return {
     restrict: "E",
     scope:{
-      static: "="
+      static: "=",
+      brand: "=",
     },
     controller: NavbarController,
     templateUrl:'../partials/navbar.jade'

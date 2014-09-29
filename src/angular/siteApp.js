@@ -1,1 +1,5 @@
-var app = angular.module('jg.site',['textAngular','templates-main']);
+var app = angular.module('jg.site',[
+  'textAngular',
+  'templates-main',
+  'ui.router' 
+]);

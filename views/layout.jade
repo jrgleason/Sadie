@@ -12,9 +12,10 @@ html
     // link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.2/textAngular.min.css')
     script(src='//cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.2/textAngular-sanitize.min.js')
     script(src='//cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.2/textAngular.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.min.js')
   body
     .app(ng-app="jg.site")
-      jg-navbar(static="true")
+      jg-navbar(static="true", brand="'Jackie'")
       block content
     script(src='/javascripts/templates.js')
     script(src='/javascripts/angular-app.js')
