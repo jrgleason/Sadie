@@ -1,5 +1,6 @@
 .node_modules
 public/javascripts/templates.js
+public/javascripts/angular-app.js
 # Logs
 logs
 *.log
