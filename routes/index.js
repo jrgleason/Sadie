@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var db = require('orchestrate')('5f510b8f-c3d7-4d74-b63f-2ed30a8659ce');
+var db = require('orchestrate')(process.env.ORCHESTRATE_KEY);
 
 /* GET home page. */
 
