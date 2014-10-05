@@ -1,0 +1,19 @@
+var app = angular.module('jg.site',[
+  'textAngular',
+  'templates-main',
+  'ui.bootstrap',
+  'ui.router',
+  'ngRoute'
+]);
+app.config(
+  function($routeProvider, $locationProvider) {
+    $routeProvider.
+      when('/:val', {
+        template: '<h1>{{$route.current.params["val"]}}</h1>',
+        controller:function($scope, $route, $routeParams, $location) {
+          $scope.$route = $route;
+          $scope.$location = $location;
+          $scope.$routeParams = $routeParams;
+        }
+      })
+  });

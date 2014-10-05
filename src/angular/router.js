@@ -1,9 +1,22 @@
 var RouteHandler = function($stateProvider,   $urlRouterProvider){
-  $urlRouterProvider.otherwise('/');
-  $stateProvider.state("home", {
-    url: "/",
-    templateUrl:"/HTML?name=Yo"
-  });
+  $urlRouterProvider.otherwise('/jg');
+  $stateProvider
+    .state("home", {
+      url: "/jg",
+      views:{
+        "MainView":{
+          templateUrl:"/HTML?name=Yo"
+        }
+      }
+    })
+    .state("admin", {
+      url: "/admin",
+      views:{
+        "AdminView":{
+          template:"<h1>Test</h1>"
+        }
+      }
+    });
 }
 angular.module('jg.site')
 .run(

@@ -12,7 +12,7 @@ module.exports = function(grunt) {
         },
         concat: {
           dist: {
-            src: ['src/angular/siteApp.js','src/angular/**/*.js'],
+            src: ['src/angular/siteApp.js','src/angular/**/app.js','src/angular/**/*.js'],
             dest: 'public/javascripts/angular-app.js',
           }
         },

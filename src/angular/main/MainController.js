@@ -1,5 +1,14 @@
-var MainController = function($scope, pageService){
+/**
+ * Home controller.
+ *
+ * @constructor
+ * @ngInject
+ * @export
+ */
+var MainController = function($scope, $state, $location, pageService){
   $scope.mc = this;
+  $scope.$state = $state;
+  $state.go('admin');
   if($scope.pageName != null){
     this.pageName = $scope.pageName;
   }
@@ -11,6 +20,14 @@ var MainController = function($scope, pageService){
     pageService.addPage(this)
                .success(function() {})
                .error(function() {});
+  };
+  this.tabs = [
+    { title:'Media' },
+    { title:'Pages', active:'true' }
+  ];
+  this.redirect = function(location){
+    console.log("Location is "+location);
+    $location.path('/'+location)
   }
 }
-MainController.$inject = ['$scope', 'pageService'];
+MainController.$inject = ['$scope', '$state', '$location', 'pageService'];

@@ -5,7 +5,7 @@ var MainPage = function(){
       pageName: "=",
       pageText: "="
     },
-    templateUrl:'../partials/admin.jade',
+    templateUrl:'../partials/form.jade',
     controller:MainController
   };
 }

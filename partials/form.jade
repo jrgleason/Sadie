@@ -1,10 +1,11 @@
-.form
-  .pageName
-    label(for="pageName") Page Name
-    input(id="pageName", type="text", ng-model="mc.pageName")
-  .pageText
-    p Page Text
-    div(text-angular, ng-model="mc.pageText",ta-unsafe-sanitizer="true")
-  button(ng-click="mc.submit()") Submit
-  h1 {{mc.pageName}}
-  div(ng-bind-html="mc.pageText")
+.form.col-sm-10
+    .pageName
+      label(for="pageName") Page Name
+      input(id="pageName", type="text", ng-model="mc.pageName")
+    .pageText
+      p Page Text
+      div(text-angular, ng-model="mc.pageText",ta-unsafe-sanitizer="true")
+    button(ng-click="mc.submit()") Submit
+    h1 {{mc.pageName}}
+    div(ng-bind-html="mc.pageText")
+    div(ng-view)

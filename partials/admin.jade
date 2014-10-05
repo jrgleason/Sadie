@@ -1,0 +1,4 @@
+div(ng-app="jg.main")
+  tabset.col-sm-2(vertical="true", type="pills")
+    tab(ng-repeat="tab in mc.tabs", heading="{{tab.title}}", active="tab.active", select="$state.go(tab.title)")
+  div(ui-view="AdminView")
